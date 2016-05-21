@@ -1,17 +1,17 @@
 angular.module('shortly.shorten', [])
 
-.controller('ShortenController', function ($scope, $location, Links) {
+.controller('ShortenController', function ($scope, $location, Links, $http) {
+
   $scope.link = {};
 
   $scope.addLink = function(Links) {
-    return $location({
+    return $http({
       method: 'POST',
-      url: $location,
+      url: '/api/links',
       data: Links
     }).then(function(resp) {
       return resp;
     });
   };
-
 
 });
