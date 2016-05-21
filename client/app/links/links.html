@@ -1,4 +1,9 @@
 <div id='container' >
   <!-- Your html here -->
-  <!-- <div ng-controller="myCtrl" ng-init="Links.getAll()"></div> -->
+  <div ng-controller="LinksController"></div>
+  <ul>
+    <li ng-repeat="link in data.links track by $index"> {{link}} </li> 
+
+  </ul>
+
 </div>

@@ -7,7 +7,6 @@ angular.module('shortly.services', [])
       url: '/api/links',
     }).then(function(resp) {
       if (resp.data) {
-        console.log('respnse.data is', resp.data);
         return resp.data.map(function(url) {
           if (cb) {
             cb(url);
