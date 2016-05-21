@@ -56,10 +56,12 @@ angular.module('shortly.services', [])
     return $http({
       method: 'POST',
       url: '/api/users/signup',
-      data: user
+      data: {username: user.username, password: user.password}
     })
     .then(function (resp) {
       return resp.data.token;
+    }, function (err) {
+      console.log(err);
     });
   };
 

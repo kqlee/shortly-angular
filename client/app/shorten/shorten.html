@@ -1,10 +1,11 @@
-<div id='container'>
+<div id='container' ng-controller="ShortenController">
 <!-- Your code here -->
 
   <form>
-  <input id="link" type="text" value="">
-  <input type="submit" value="Add">
-</form>
+    <input id="link" type="url" placeholder="Enter URL" ng-model="LINK">
+    <button type="submit" ng-click="addLink(LINK)">Add</button>
+    <div>{{LINK}}</div>
+  </form>
 
 </div>
 
