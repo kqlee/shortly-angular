@@ -1,7 +1,38 @@
 angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
-  // Your code here
+  var getAll = function(cb) {
+    return $http({
+      method: 'GET',
+      url: '/api/links',
+    }).then(function(resp) {
+      if (resp.data) {
+        console.log('respnse.data is', resp.data);
+        return resp.data.map(function(url) {
+          if (cb) {
+            cb(url);
+          }
+          return url;
+        });
+      }
+    });
+  };
+
+  var addOne = function(link) {
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: link
+    }).then(function(resp) {
+      return resp;
+    });
+  };
+
+  return {
+    getAll: getAll,
+    addOne: addOne    
+  };
+
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
