@@ -1,9 +1,18 @@
 <div id='container' >
   <!-- Your html here -->
   <div ng-controller="LinksController"></div>
+<label>Search: <input ng-model="searchText"></label>
   <ul style= "list-style: none">
-    <li class="link" ng-repeat="link in data.links track by $index"> {{link}} </li> 
-
+    <li class="link" ng-repeat="link in data.links | orderBy:'-visits' | filter:searchText"> 
+      <img src="./assets/redirect_icon.png"/> 
+      <div class="title"> {{link.title}} 
+      <div class="visits">Visit
+        <span class="count">{{link.visits}}</span>
+      </div>
+      </div>
+      <div class="original">{{link.url}}</div>
+      <div class="info"><a href="{{link.code}}"/> {{link.baseUrl + '/' + link.code}} </a> </div>
+     </li> 
   </ul>
 
 </div>
